@@ -1,7 +1,9 @@
+// Made Todo List
+
 let addToList = document.querySelector(".add");
 let clear = document.querySelector(".clear");
 
-function update() {
+function getAndUpdate() {
   let todoTitle = document.querySelector(".title").value;
   let todoDesc = document.querySelector(".descrip").value;
 
@@ -15,7 +17,21 @@ function update() {
     itemJsonArray.push([todoTitle, todoDesc]);
     localStorage.setItem("itemsJson", JSON.stringify(itemJsonArray));
   }
+update();
 
+}
+
+
+function update() {
+
+    if (localStorage.getItem("itemsJson") == null) {
+    let itemJsonArray = [];
+    localStorage.setItem("itemsJson", JSON.stringify(itemJsonArray));
+  } else {
+    let itemJsonArrayStr = localStorage.getItem("itemsJson");
+    itemJsonArray = JSON.parse(itemJsonArrayStr);
+  }
+  
   let todoList = document.getElementById("todo-list");
   let str = "";
 
@@ -24,7 +40,7 @@ function update() {
       <div class="item">
                 <p class="title-todo">${index + 1}. ${element[0]}</p>
                 <p class="description-todo">${element[1]}</p>
-                <button onClick="deleted(4)" class="btn btn-primary delete">Delete</button>
+                <button onClick="deleted(${index})" class="btn btn-primary delete">Delete</button>
               </div> `;
   });
 
@@ -32,7 +48,12 @@ function update() {
 }
 
 function deleted(item) {
-  alert(item);
+  let itemJsonArrayStr = localStorage.getItem("itemsJson");
+  itemJsonArray = JSON.parse(itemJsonArrayStr);
+  itemJsonArray.splice(item, 1);
+  localStorage.setItem("itemsJson", JSON.stringify(itemJsonArray));
+
+  update();
 }
 
 clear.addEventListener("click", () => {
@@ -44,5 +65,7 @@ clear.addEventListener("click", () => {
     }
 });
 
+addToList.addEventListener("click", getAndUpdate);
 update();
-addToList.addEventListener("click", update);
+
+// Todo List End
