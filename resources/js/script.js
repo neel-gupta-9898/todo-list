@@ -37,7 +37,7 @@ function update() {
 
   itemJsonArray.forEach((element, index) => {
     str += `
-      <div class="item">
+      <div class="item" id="items">
                 <p class="title-todo">${index + 1}. ${element[0]}</p>
                 <p class="description-todo">${element[1]}</p>
                 <button onClick="deleted(${index})" class="btn btn-primary delete">Delete</button>
@@ -69,3 +69,23 @@ addToList.addEventListener("click", getAndUpdate);
 update();
 
 // Todo List End
+
+
+function searchToDo(){
+  let inputBox = document.getElementById("search-box").value.toUpperCase();
+
+  let itemList = document.getElementById("items");
+  
+
+  for(var i=0; i<itemList.length; i++){
+   let itemValue = itemList[i].getElementsByTagName("p")[0];
+    let textValue = itemValue.textContent || a.innerHTML;
+
+    if(textValue.toUpperCase().indexOf(inputBox)){
+      itemList[i].style.display = "";
+      
+    }else{
+      itemList[i].style.display = "none";
+    }
+  }
+}
