@@ -61,7 +61,7 @@ clear.addEventListener("click", () => {
     if(conf){
 
         localStorage.clear();
-        alert("Refresh the Page");
+        alert("Refresh the App");
     }
 });
 
