@@ -40,7 +40,7 @@ function update() {
       <div class="item" id="items">
                 <p class="title-todo">${index + 1}. ${element[0]}</p>
                 <p class="description-todo">${element[1]}</p>
-                <button onClick="deleted(${index})" class="btn btn-primary delete">Delete</button>
+                <button onClick="deleted(${index})" class="btn btn-danger delete">Delete</button>
               </div> `;
   });
 
