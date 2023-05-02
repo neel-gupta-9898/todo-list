@@ -12,9 +12,10 @@
 }
 
 .title-todo{
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .description-todo{
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+    color:grey;
 }
