@@ -1,20 +1,20 @@
 // Made Todo List
 
-let addToList = document.querySelector(".add");
-let clear = document.querySelector(".clear");
+const addToList = document.querySelector(".add");
+const clear = document.querySelector(".clear");
 
 function getAndUpdate() {
   let todoTitle = document.querySelector(".title").value;
-  let todoDesc = document.querySelector(".descrip").value;
+  let todoTime = document.querySelector(".descrip").value;
 
   if (localStorage.getItem("itemsJson") == null) {
     let itemJsonArray = [];
-    itemJsonArray.push([todoTitle, todoDesc]);
+    itemJsonArray.push([todoTitle, todoTime]);
     localStorage.setItem("itemsJson", JSON.stringify(itemJsonArray));
   } else {
     let itemJsonArrayStr = localStorage.getItem("itemsJson");
     itemJsonArray = JSON.parse(itemJsonArrayStr);
-    itemJsonArray.push([todoTitle, todoDesc]);
+    itemJsonArray.push([todoTitle, todoTime]);
     localStorage.setItem("itemsJson", JSON.stringify(itemJsonArray));
   }
 update();
