@@ -5,16 +5,17 @@ const clear = document.querySelector(".clear");
 
 function getAndUpdate() {
   let todoTitle = document.querySelector(".title").value;
-  let todoTime = document.querySelector(".descrip").value;
+  let todoTime = document.querySelector(".time").value;
+  let todoDate = document.querySelector(".date").value;
 
   if (localStorage.getItem("itemsJson") == null) {
     let itemJsonArray = [];
-    itemJsonArray.push([todoTitle, todoTime]);
+    itemJsonArray.push([todoTitle, todoTime, todoDate]);
     localStorage.setItem("itemsJson", JSON.stringify(itemJsonArray));
   } else {
     let itemJsonArrayStr = localStorage.getItem("itemsJson");
     itemJsonArray = JSON.parse(itemJsonArrayStr);
-    itemJsonArray.push([todoTitle, todoTime]);
+    itemJsonArray.push([todoTitle, todoTime, todoDate]);
     localStorage.setItem("itemsJson", JSON.stringify(itemJsonArray));
   }
 update();
