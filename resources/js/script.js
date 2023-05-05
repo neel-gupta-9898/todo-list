@@ -39,12 +39,10 @@ function update() {
   itemJsonArray.forEach((element, index) => {
     str += `
       <div class="item" id="items">
-                <p class="title-todo">${index + 1}. ${element[0]}</p>
-                <p class="description-todo">${element[1]}</p>
-                <p class="description-todo">${element[2]}</p>
-                
-                <button onClick="deleted(${index})" class="btn btn-danger delete">Delete</button>
-              </div> `;
+        <p class="title-todo">${index + 1}. ${element[0]}</p>
+        <p class="description-todo">${element[1]}, ${element[2]}</p>                
+        <button onClick="deleted(${index})" class="btn btn-danger delete">Delete</button>
+      </div> `;
   });
 
   todoList.innerHTML = str;
@@ -62,8 +60,8 @@ function deleted(item) {
 clear.addEventListener("click", () => {
     conf = confirm("Do Your Want to Clear all the Todos")
     if(conf){
-
         localStorage.clear();
+        location.reload(true);
         alert("Refresh the App");
     }
 });
