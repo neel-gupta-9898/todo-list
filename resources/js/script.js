@@ -18,21 +18,18 @@ function getAndUpdate() {
     itemJsonArray.push([todoTitle, todoTime, todoDate]);
     localStorage.setItem("itemsJson", JSON.stringify(itemJsonArray));
   }
-update();
-
+  update();
 }
 
-
 function update() {
-
-    if (localStorage.getItem("itemsJson") == null) {
+  if (localStorage.getItem("itemsJson") == null) {
     let itemJsonArray = [];
     localStorage.setItem("itemsJson", JSON.stringify(itemJsonArray));
   } else {
     let itemJsonArrayStr = localStorage.getItem("itemsJson");
     itemJsonArray = JSON.parse(itemJsonArrayStr);
   }
-  
+
   let todoList = document.getElementById("todo-list");
   let str = "";
 
@@ -40,7 +37,9 @@ function update() {
     str += `
       <div class="item" id="items">
         <p class="title-todo">${index + 1}. ${element[0]}</p>
-        <p class="description-todo">${element[1]}, ${element[2]}</p>                
+        <p class="description-todo">${element[1]}, ${
+      element[2]
+    }</p>                
         <button onClick="deleted(${index})" class="btn btn-danger delete">Delete</button>
       </div> `;
   });
@@ -58,12 +57,11 @@ function deleted(item) {
 }
 
 clear.addEventListener("click", () => {
-    conf = confirm("Do Your Want to Clear all the Todos")
-    if(conf){
-        localStorage.clear();
-        location.reload(true);
-        alert("Refresh the App");
-    }
+  conf = confirm("Do Your Want to Clear all the Todos");
+  if (conf) {
+    localStorage.clear();
+    location.reload(true);
+  }
 });
 
 addToList.addEventListener("click", getAndUpdate);
@@ -71,22 +69,19 @@ update();
 
 // Todo List End
 
-
-function searchToDo(){
+function searchToDo() {
   let inputBox = document.getElementById("search-box").value.toUpperCase();
 
   let itemList = document.getElementById("items");
-  
 
-  for(var i=0; i<itemList.length; i++){
-   let itemValue = itemList[i].getElementsByTagName("p")[0];
+  for (var i = 0; i < itemList.length; i++) {
+    let itemValue = itemList[i].getElementsByTagName("p")[0];
     let textValue = itemValue.textContent || a.innerHTML;
 
-    if(textValue.toUpperCase().indexOf(inputBox)){
+    if (textValue.toUpperCase().indexOf(inputBox)) {
       itemList[i].style.display = "";
-      
-    }else{
+    } else {
       itemList[i].style.display = "none";
     }
-  }
-}
+  };
+};
